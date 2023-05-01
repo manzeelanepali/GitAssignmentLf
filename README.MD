@@ -42,3 +42,41 @@ We can follow the foloowing steps to revert a command .
  "git revert" craetes a new commit that undoes the changes introduced by a previous commit which is to say the original commit remains in the commit history but a new commit is added to undo the changes. Its useful when we want to undo changes but still keep a record of the original commits and its changes. 
 
  "git reset " on the other hands removes the commits from the commit history entirely.
+
+
+ Git Assignment 2 (part1)
+ 1. write the difference between the fetch and pull command?
+
+ => Both fetch and pull are Git commands that allow you to update your local repository with changes from a remote repository. However, they have some differences in how they work:
+
+fetch downloads new commits from a remote repository but does not integrate them into your local branch. It updates the "remote-tracking branches", which are references to the state of the remote branches, but it does not modify your local working directory. This means that after a fetch, you need to manually merge or rebase the changes into your local branch to incorporate them.
+
+pull is a combination of fetch and merge. It downloads new commits from the remote repository and automatically integrates them into your local branch by merging them. This means that a pull will update both the remote-tracking branch and the local working directory with the latest changes from the remote repository.
+
+In summary, fetch is a safe operation that downloads changes from the remote repository without modifying your local working directory, while pull is a more aggressive operation that updates your local working directory with the latest changes from the remote repository.
+
+
+2. how to handle the merge conflict?
+
+=>
+A merge conflict happens when Git is unable to automatically merge changes from two different branches. This usually occurs when two different branches have modified the same lines of code, or when one branch has deleted a file that another branch has modified.
+
+To handle a merge conflict, follow these steps:
+
+First, ensure that your local repository is up to date by fetching the latest changes from the remote repository: git fetch origin.
+
+Next, switch to the branch that you want to merge into: git checkout branch-to-merge-into.
+
+Start the merge process: git merge branch-to-merge-from.
+
+If Git encounters a merge conflict, it will mark the conflicting files in your working directory. Open these files in your code editor and search for the conflict markers, which will look something like this: <<<<<<< HEAD and >>>>>>> branch-to-merge-from.
+
+Edit the conflicting code to resolve the conflict, keeping the changes that you want to keep and removing any unnecessary code. Save the file.
+
+After resolving all conflicts, stage the changes by using git add for each modified file.
+
+Once all conflicts are resolved and changes are staged, commit the changes with a commit message explaining the resolution of the conflict: git commit -m "Resolved merge conflict."
+
+Finally, push the changes to the remote repository: git push origin branch-to-merge-into.
+
+By following these steps, you can successfully resolve any merge conflicts that occur in your Git workflow
